@@ -1,0 +1,20 @@
+<header>
+  <h2> Lists </h2>
+</header>
+<div data-controller="list">
+<ul>
+<% @lists.each do |list| %>
+  <li>
+    <a href="/lists/<%= "#{list.id}"%>">
+      <%= list.name %>
+    </a>
+     <a data-list-id=<%= list.id %> href="#" data-action="click->list#deleteList">x</a>
+  </li>
+<% end %>
+</ul>
+
+
+
+  <input data-target="list.listName">
+  <button data-action="click->list#createList">Create List</button>
+</div>

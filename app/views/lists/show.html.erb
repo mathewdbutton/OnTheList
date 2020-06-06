@@ -1,0 +1,17 @@
+
+
+<header>
+  <h2> <%= @list.name %> </h2>
+</header>
+<div data-controller="item" data-list-id=<%= @list.id %> >
+<ul>
+<% @list.items.each do |item| %>
+  <li>
+    <%= item.name %> <a data-item-id=<%= item.id %> href="#" data-action="click->item#deleteItem">x</a>
+  </li>
+<% end %>
+</ul>
+
+  <input data-target="item.itemName">
+  <button data-action="click->item#createItem">Add Item</button>
+</div>
