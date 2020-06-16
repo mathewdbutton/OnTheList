@@ -3,14 +3,17 @@ class CreateListsAndItems < ActiveRecord::Migration[6.0]
     create_table :lists do |t|
       t.string :name
       t.string :desc
-
       t.timestamps
     end
     create_table :items do |t|
       t.string :name
       t.string :desc
+      t.timestamps
+    end
+    create_table :list_items do |t|
+      t.references :list
+      t.references :item
       t.integer :quantity
-      t.references :list, foreign_key: true
       t.timestamps
     end
   end

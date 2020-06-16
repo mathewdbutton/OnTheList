@@ -22,10 +22,10 @@ class ItemReflex < ApplicationReflex
   # Learn more at: https://docs.stimulusreflex.com
 
   def create_item(item_data)
-    Item.create(item_data)
+    ListItem.create!(list_id: item_data["listId"], item_attributes: item_data["itemData"])
   end
 
-  def delete_item(item_id)
-    Item.find(item_id).destroy
+  def delete_item(list_item_id)
+    ListItem.find(list_item_id).destroy
   end
 end

@@ -8,16 +8,16 @@ export default class extends ApplicationController {
 
   createItem(event) {
     const itemData = this.itemNameTarget.value;
-    this.stimulate('ItemReflex#create_item', { list_id: this.listId, name: itemData });
+    this.stimulate('ItemReflex#create_item', { listId: this.listId, itemData: { name: itemData } });
   }
 
   deleteItem(event) {
     event.preventDefault()
-    const itemId = event.originalTarget.dataset["itemId"]
+    const itemId = event.originalTarget.dataset["itemListId"]
     this.stimulate('ItemReflex#delete_item', itemId);
   }
 
   get listId() {
-    return Number(this.data.get("id"))
+    return Number(this.data.get("list-id"))
   }
 }

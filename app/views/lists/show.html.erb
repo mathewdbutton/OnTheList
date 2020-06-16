@@ -3,15 +3,20 @@
 <header>
   <h2> <%= @list.name %> </h2>
 </header>
-<div data-controller="item" data-list-id=<%= @list.id %> >
+<div data-controller="item" data-item-list-id=<%= @list.id %> >
 <ul>
-<% @list.items.each do |item| %>
+<% @list.list_items.each do |list_item| %>
   <li>
-    <%= item.name %> <a data-item-id=<%= item.id %> href="#" data-action="click->item#deleteItem">x</a>
+    <%= list_item.item %> <a data-item-list-id=<%= list_item.id %> href="#" data-action="item#deleteItem">x</a>
   </li>
 <% end %>
 </ul>
 
+  <select>
+    <% @items.each do |item| %>
+    <option value=<%= item.id %>><%= item.name %></option>
+    <% end %>
+  </select>
   <input data-target="item.itemName">
   <button data-action="click->item#createItem">Add Item</button>
 </div>

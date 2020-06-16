@@ -18,11 +18,18 @@ ActiveRecord::Schema.define(version: 2020_06_01_115456) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "desc"
-    t.integer "quantity"
-    t.bigint "list_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["list_id"], name: "index_items_on_list_id"
+  end
+
+  create_table "list_items", force: :cascade do |t|
+    t.bigint "list_id"
+    t.bigint "item_id"
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_list_items_on_item_id"
+    t.index ["list_id"], name: "index_list_items_on_list_id"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -32,5 +39,4 @@ ActiveRecord::Schema.define(version: 2020_06_01_115456) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "items", "lists"
 end
