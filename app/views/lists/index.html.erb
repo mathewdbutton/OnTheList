@@ -5,9 +5,7 @@
   <ul>
     <% @lists.each do |list| %>
       <li>
-        <a href="lists/<%= "#{list.id}"%>/list_items">
-          <%= list.name %>
-        </a>
+      <%= link_to list.name, list_list_items_path(list) %>
         <a data-list-id=<%= list.id %> href="#" data-action="click->list#deleteList">x</a>
       </li>
     <% end %>
