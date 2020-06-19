@@ -6,15 +6,15 @@ import ApplicationController from './application_controller'
 export default class extends ApplicationController {
   static targets = ["itemName"]
 
-  createItem(event) {
+  createListItem(event) {
     const itemData = this.itemNameTarget.value;
-    this.stimulate('ItemReflex#create_item', { listId: this.listId, itemData: { name: itemData } });
+    this.stimulate('ListItemReflex#create_list_item', { listId: this.listId, itemData: { name: itemData } });
   }
 
-  deleteItem(event) {
+  deleteListItem(event) {
     event.preventDefault()
     const itemId = event.originalTarget.dataset["itemListId"]
-    this.stimulate('ItemReflex#delete_item', itemId);
+    this.stimulate('ListItemReflex#delete_list_item', itemId);
   }
 
   get listId() {

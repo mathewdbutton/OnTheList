@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ItemReflex < ApplicationReflex
+class ListItemReflex < ApplicationReflex
   # Add Reflex methods in this file.
   #
   # All Reflex instances expose the following properties:
@@ -21,11 +21,11 @@ class ItemReflex < ApplicationReflex
   #
   # Learn more at: https://docs.stimulusreflex.com
 
-  def create_item(item_data)
-    ListItem.create!(list_id: item_data["listId"], item_attributes: item_data["itemData"])
+  def create_list_item(list_item_data)
+    ListItem.create!(list_id: list_item_data["listId"], item_attributes: list_item_data["itemData"])
   end
 
-  def delete_item(list_item_id)
+  def delete_list_item(list_item_id)
     ListItem.find(list_item_id).destroy
   end
 end
