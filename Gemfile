@@ -56,3 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "stimulus_reflex", "~> 3.2"
 
 gem "rspec-rails", "~> 4.0"
+
+
+gem "rubocop", "~> 0.85.1"
