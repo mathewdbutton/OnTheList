@@ -22,7 +22,7 @@ class ListItemReflex < ApplicationReflex
   # Learn more at: https://docs.stimulusreflex.com
 
   def create_list_item(list_item_data)
-    ListItem.create!(list_id: list_item_data["listId"], item_attributes: list_item_data["itemData"])
+    ListItem.create!(list_id: list_item_data['listId'], item_attributes: list_item_data['itemData'])
   end
 
   def delete_list_item(list_item_id)

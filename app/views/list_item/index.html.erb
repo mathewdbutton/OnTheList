@@ -1,0 +1,19 @@
+<% content_for :heading do %>
+  <h2> <%= @list.name %> </h2>
+<% end %>
+<div data-controller="list-item" data-reflex-root="[list],[options]" data-list-item-list-id=<%= @list.id %> >
+  <ul list>
+    <% @list_items.each do |list_item| %>
+      <li>
+        <%= list_item.item.name %> <a data-item-list-id=<%= list_item.id %> href="#" data-action="list-item#deleteListItem">x</a>
+      </li>
+    <% end %>
+  </ul>
+    <select options>
+    <% @items.each do |item| %>
+      <option value=<%= item.id %>><%= item.name %></option>
+    <% end %>
+  </select>
+  <input data-target="list-item.itemName">
+  <button data-action="click->list-item#createListItem">Add Item</button>
+</div>
