@@ -1,4 +1,6 @@
 <li>
   <%= link_to list.name, list_list_items_path(list) %>
-  <a data-list-id=<%= list.id %> href="#" data-action="click->list#deleteList">x</a>
+  <% if allow_delete %>
+    <a data-list-id=<%= list.id %> href="#" data-action="click->list#deleteList">x</a>
+  <% end %>
 </li>

@@ -3,7 +3,7 @@
 <% end %>
 <div data-controller="list">
   <ul>
-    <%= render(ListRecordComponent.with_collection(@lists)) %>
+    <%= render(ListRecordComponent.with_collection(@lists, allow_delete: true)) %>
   </ul>
   <input data-target="list.listName">
   <button data-action="click->list#createList">Create List</button>
