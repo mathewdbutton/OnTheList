@@ -60,3 +60,7 @@ gem "rspec-rails", "~> 4.0"
 gem "rubocop", "~> 0.85.1"
 
 gem "view_component", "~> 2.11"
+
+gem "pry-rails", "~> 0.3.9"
+
+gem "pg_search", "~> 2.3"

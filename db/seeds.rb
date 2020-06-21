@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+list = List.find_or_create_by(name: "Shopping List")
+items = [Item.find_or_create_by(name: "Salmon"), Item.find_or_create_by(name: "Jerky"), Item.find_or_create_by(name: "Figs")]
+list.list_items.find_or_create_by(item: items.first)
+list.list_items.find_or_create_by(item: items.second)
+list.list_items.find_or_create_by(item: items.third)

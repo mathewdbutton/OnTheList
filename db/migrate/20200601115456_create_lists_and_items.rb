@@ -8,6 +8,7 @@ class CreateListsAndItems < ActiveRecord::Migration[6.0]
     create_table :items do |t|
       t.string :name
       t.string :desc
+      t.index :name
       t.timestamps
     end
     create_table :list_items do |t|
