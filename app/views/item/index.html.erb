@@ -1,0 +1,15 @@
+<% content_for :heading do %>
+  <h2> Items </h2>
+<% end %>
+<div data-controller="item" data-reflex-root="[list]" >
+  <ul list>
+    <% @items.each do |item| %>
+      <li>
+        <%= item.name %> <a data-item-id=<%= item.id %> href="#" data-reflex="click->ItemReflex#delete_item">x</a>
+      </li>
+    <% end %>
+  </ul>
+
+  <input data-target="list.itemName">
+  <button data-action="click->item#createItem">Add Item</button>
+</div>
