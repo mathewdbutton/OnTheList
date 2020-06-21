@@ -9,3 +9,11 @@
 <hr>
 
 <h3> <%= link_to 'Items', items_path %> </h3>
+<h4> Recently Updated: </h4>
+<ul>
+  <% @items.each do |item| %>
+    <li>
+      <%= item.name %>
+    </li>
+  <% end %>
+</ul>
