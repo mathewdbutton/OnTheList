@@ -4,4 +4,5 @@
 
 
 <h3> <%= link_to 'Lists', lists_path %> </h3>
-
+<h4> Recently Updated: </h4>
+<%= render(ListRecordComponent.with_collection(@lists)) %>

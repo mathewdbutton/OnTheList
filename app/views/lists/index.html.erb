@@ -3,12 +3,7 @@
 <% end %>
 <div data-controller="list">
   <ul>
-    <% @lists.each do |list| %>
-      <li>
-      <%= link_to list.name, list_list_items_path(list) %>
-        <a data-list-id=<%= list.id %> href="#" data-action="click->list#deleteList">x</a>
-      </li>
-    <% end %>
+    <%= render(ListRecordComponent.with_collection(@lists)) %>
   </ul>
   <input data-target="list.listName">
   <button data-action="click->list#createList">Create List</button>

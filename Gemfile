@@ -57,5 +57,6 @@ gem "stimulus_reflex", "~> 3.2"
 
 gem "rspec-rails", "~> 4.0"
 
-
 gem "rubocop", "~> 0.85.1"
+
+gem "view_component", "~> 2.11"
