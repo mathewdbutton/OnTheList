@@ -9,6 +9,6 @@
 
 list = List.find_or_create_by(name: "Shopping List")
 items = [Item.find_or_create_by(name: "Salmon"), Item.find_or_create_by(name: "Jerky"), Item.find_or_create_by(name: "Figs")]
-list.list_items.find_or_create_by(item: items.first)
-list.list_items.find_or_create_by(item: items.second)
-list.list_items.find_or_create_by(item: items.third)
+list.list_items.find_or_create_by(item: items.first, quantity: "2 Pieces")
+list.list_items.find_or_create_by(item: items.second, quantity: "1 Bag")
+list.list_items.find_or_create_by(item: items.third, quantity: "3")

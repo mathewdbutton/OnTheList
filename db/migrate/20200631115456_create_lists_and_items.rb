@@ -14,7 +14,7 @@ class CreateListsAndItems < ActiveRecord::Migration[6.0]
     create_table :list_items do |t|
       t.references :list
       t.references :item
-      t.integer :quantity
+      t.string :quantity
       t.timestamps
     end
   end

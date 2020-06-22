@@ -3,11 +3,7 @@
 <% end %>
 <div data-controller="list-item"  data-list-item-list-id=<%= @list.id %> >
   <ul list>
-    <% @list_items.each do |list_item| %>
-      <li>
-        <%= list_item.item.name %> <a data-item-list-id=<%= list_item.id %> href="#" data-reflex="click->ListItemReflex#delete_list_item">x</a>
-      </li>
-    <% end %>
+    <%= render(ListItemRecordComponent.with_collection(@list_items, allow_delete: true)) %>
   </ul>
   <input data-target="list-item.itemName" data-reflex="input->ListItemReflex#autocomplete_item">
   <button data-item-id="" data-action="click->list-item#createListItem">Add Item</button>
