@@ -2,11 +2,8 @@
 
 class ListItemReflex < ApplicationReflex
   def create_list_item(list_item_data)
-    if list_item_data['itemId'].present?
-      ListItem.create!(list_id: list_item_data['listId'], item_id: list_item_data['itemId'])
-    else
-      ListItem.create!(list_id: list_item_data['listId'], item_attributes: list_item_data['itemData'])
-    end
+    list_item_attributes = item_create_hash(list_item_data)
+    ListItem.create!(list_item_attributes)
     List.find(list_item_data['listId']).touch
   end
 
@@ -18,5 +15,18 @@ class ListItemReflex < ApplicationReflex
   def autocomplete_item()
     value = element["value"]
     @items = Item.search_by_name(value)
+  end
+
+  private
+
+  def item_create_hash(hash)
+    {
+      list_id: hash['listId'],
+      quantity: hash['itemQuantity'],
+      item_id: (hash['itemId'] if hash['itemId'].present?),
+      item_attributes: ({
+        name: hash['itemName'],
+      } if hash['itemId'].blank?)
+    }.compact
   end
 end

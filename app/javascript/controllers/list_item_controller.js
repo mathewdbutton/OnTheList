@@ -4,13 +4,14 @@ import ApplicationController from './application_controller'
  * Learn more at: https://docs.stimulusreflex.com
  */
 export default class extends ApplicationController {
-  static targets = ["itemName"]
+  static targets = ["itemName", "itemQuantity"]
 
   createListItem(event) {
     event.preventDefault()
     const itemId = event.target.dataset["itemId"]
-    const itemData = this.itemNameTarget.value;
-    this.stimulate('ListItemReflex#create_list_item', { listId: this.listId, itemData: { name: itemData }, itemId: itemId});
+    const itemName = this.itemNameTarget.value;
+    const itemQuantity = this.itemQuantityTarget.value;
+    this.stimulate('ListItemReflex#create_list_item', { listId: this.listId, itemName, itemId, itemQuantity });
   }
 
   get listId() {
