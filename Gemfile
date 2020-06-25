@@ -25,6 +25,17 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem "rubocop", "~> 0.85.1"
+
+# Trying out new view components
+gem "view_component", "~> 2.11"
+
+# Our holy saviour
+gem "pry-rails", "~> 0.3.9"
+
+# Used for searching for text on specific fields
+gem "pg_search", "~> 2.3"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -48,19 +59,11 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+
+  gem "rspec-rails", "~> 4.0"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "stimulus_reflex", "~> 3.2"
-
-gem "rspec-rails", "~> 4.0"
-
-gem "rubocop", "~> 0.85.1"
-
-gem "view_component", "~> 2.11"
-
-gem "pry-rails", "~> 0.3.9"
-
-gem "pg_search", "~> 2.3"
