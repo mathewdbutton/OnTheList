@@ -39,3 +39,5 @@ yarn-debug.log*
 
 certs/*
 Caddyfile
+
+/config/credentials/production.key
