@@ -51,6 +51,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  gem "rubocop", "~> 0.85.1"
+  gem "standard", "~> 0.4.7"
 end
 
 group :test do
@@ -67,3 +70,14 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "stimulus_reflex", "~> 3.2"
+
+
+
+gem "view_component", "~> 2.11"
+
+gem "pry-rails", "~> 0.3.9"
+
+gem "pg_search", "~> 2.3"
+
+gem "redis", ">= 4.0", :require => ["redis", "redis/connection/hiredis"]
+gem "hiredis"

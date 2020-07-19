@@ -1,0 +1,14 @@
+version: '3'
+services:
+  caddy:
+    image: caddy/caddy:alpine
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - ./certs:/root/certs # to sync mkcert certificates to Caddy
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+
+volumes:
+  caddy_data:
