@@ -29,8 +29,6 @@ services:
       - .:/myapp
       - web_gem_cache:/usr/local/bundle
       - web_npm_cache:/myapp/node_modules
-    ports:
-      - "3000:3000"
     depends_on:
       - db
 
