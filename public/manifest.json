@@ -1,0 +1,9 @@
+{
+  "name": "On The List",
+  "short_name": "On The List",
+  "description": "For all your list based needs",
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}

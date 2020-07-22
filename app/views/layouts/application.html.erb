@@ -9,6 +9,15 @@
     <%# https://newcss.net/demo/ %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.3/new.min.css">
 
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="On The LIst">
+    <meta name="apple-mobile-web-app-title" content="On The LIst">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= raw turbolink_caching_directive %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
