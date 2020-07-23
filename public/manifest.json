@@ -5,5 +5,12 @@
   "lang": "en-US",
   "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/icons/first-icon-draft.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    }
+  ]
 }
