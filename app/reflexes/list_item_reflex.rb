@@ -1,10 +1,19 @@
 # frozen_string_literal: true
 
 class ListItemReflex < ApplicationReflex
+  include CableReady::Broadcaster
+
   def create_list_item(list_item_data)
     list_item_attributes = item_create_hash(list_item_data)
     ListItem.create!(list_item_attributes)
-    List.find(list_item_data['listId']).touch
+    List.find(list_item_data["listId"]).touch
+
+    cable_ready["list_item_created"].set_dataset_property(
+      selector: "#list-item-name",
+      name: "givefocus",
+      value: "true"
+    )
+    cable_ready.broadcast
   end
 
   def delete_list_item
