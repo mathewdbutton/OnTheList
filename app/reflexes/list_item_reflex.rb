@@ -22,7 +22,7 @@ class ListItemReflex < ApplicationReflex
   end
 
   def autocomplete_item
-    value = element['value']
+    value = element["value"]
     @items = Item.search_by_name(value)
   end
 
@@ -30,17 +30,17 @@ class ListItemReflex < ApplicationReflex
 
   def item_create_hash(hash)
     {
-      list_id: hash['listId'],
-      quantity: hash['itemQuantity'],
+      list_id: hash["listId"],
+      quantity: hash["itemQuantity"],
       **new_or_existing_item_details(hash)
     }
   end
 
   def new_or_existing_item_details(hash)
-    if hash['itemId'].present?
-      { item_id: hash['itemId'] }
+    if hash["itemId"].present?
+      {item_id: hash["itemId"]}
     else
-      { item_attributes: { name: hash['itemName'] } }
+      {item_attributes: {name: hash["itemName"]}}
     end
   end
 end

@@ -25,7 +25,7 @@ class ItemReflex < ApplicationReflex
     Item.create(item_data)
   end
 
-  def delete_item()
+  def delete_item
     list_item_id = element.dataset[:"item-id"]
     Item.find(list_item_id).destroy
   end
