@@ -47,7 +47,7 @@ export default class extends Controller {
     // document.body.classList.remove('wait')
   }
 
-  afterReflex () {
+  setFocus() {
     const focusElement = this.element.querySelector("[data-givefocus]")
     if (focusElement) {
       focusElement.focus()
