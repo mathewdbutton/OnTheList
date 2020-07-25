@@ -7,8 +7,9 @@ export default class extends ApplicationController {
 
   createListItem(event) {
     event.preventDefault()
+    const itemName = this.itemNameTarget.value
+    if (itemName === "") return;
     const itemId = event.target.dataset["itemId"]
-    const itemName = this.itemNameTarget.value;
     const itemQuantity = this.itemQuantityTarget.value;
     this.stimulate(CreateListItemReflex, { listId: this.listId, itemName, itemId, itemQuantity });
   }
