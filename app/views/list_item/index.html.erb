@@ -5,7 +5,7 @@
   <ul list>
     <%= render(ListItemRecordComponent.with_collection(@list_items, allow_delete: true)) %>
   </ul>
-  <input id="list-item-name" data-target="list-item.itemName" placeholder="Item Name" data-reflex="input->ListItemReflex#autocomplete_item">
+  <input id="list-item-name" data-target="list-item.itemName" placeholder="Item Name" data-givefocus="true" data-reflex="input->ListItemReflex#autocomplete_item">
   <input data-target="list-item.itemQuantity" placeholder="Item Quantity">
   <button data-item-id="" data-action="click->list-item#createListItem">Add Item</button>
   <div options>
