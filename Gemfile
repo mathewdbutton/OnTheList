@@ -45,6 +45,9 @@ gem "stimulus_reflex", "~> 3.2"
 group :development, :test do
   # Fixture generator
   gem "factory_bot_rails"
+
+  # Handle .env files
+  gem 'dotenv-rails'
 end
 
 group :development do
