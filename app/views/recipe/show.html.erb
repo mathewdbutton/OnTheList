@@ -1,0 +1,22 @@
+<% content_for :heading do %>
+  <h2> Recipe: <%= @recipe.title %> </h2>
+  <p><%= @recipe.description %> </p>
+<% end %>
+
+<h3>Ingredients</h3>
+<% @recipe.lists.each do |list| %>
+  <h4><%= list.name %></h4>
+  <ul list>
+    <%= render(ListItemRecordComponent.with_collection(list.list_items, allow_delete: true)) %>
+  </ul>
+  <hr>
+<% end %>
+
+Method:
+<ol>
+<% @recipe.method_list.each do |method_item| %>
+  <li><%= sprintf(method_item.step, *method_item.replacements.map{ |list_item| list_item.item.name })%> </li>
+<% end %>
+</ol>
+
+<%= link_to 'Start Cookin', recipe_method_path(recipe_id: 1, id: 1) %>

@@ -1,0 +1,14 @@
+<% content_for :heading do %>
+  <h2> Step <%= @method.ordering %>: </h2>
+<% end %>
+
+<h3>Ingredients for this step:</h3>
+  <ul list>
+    <%= render(ListItemRecordComponent.with_collection(@method.replacements, allow_delete: false)) %>
+  </ul>
+<hr>
+
+
+<%= sprintf(@method.step, *@method.replacements.map{ |list_item| list_item.item.name })%>
+
+<h3> <%= link_to 'Next Step', recipe_method_path(recipe_id: 1, id:@method.ordering+1) %> </h3>

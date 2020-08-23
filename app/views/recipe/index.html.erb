@@ -1,0 +1,18 @@
+<% content_for :heading do %>
+  <h2> Recipes </h2>
+<% end %>
+
+<div data-controller="recipe" data-reflex-root="[list]" >
+    <ul list>
+    <% @recipes.each do |recipe| %>
+      <li>
+        <span><%= recipe.title %> <a data-recipe-id=<%= recipe.id %> href="#" data-reflex="click->ItemReflex#delete_item">x</a><span>
+        <br>
+        <span><%= recipe.description %><span>
+        <%= link_to 'Go to recipe', recipe_path(id: 1) %>
+      </li>
+    <% end %>
+  </ul>
+  <input data-target="recipe.recipeTitle">
+  <button data-action="click->list#createList">Create List</button>
+</div>
