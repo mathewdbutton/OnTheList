@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # get 'list_item#index'
   resources :lists, only: [:show, :index] do
-    resources :list_items, only: [:index], controller: "list_item", name_prefix: "list_"
+    resources :list_items, only: [:index, :create]
   end
 
   resources :items, only: [:show, :index], controller: "item"

@@ -42,6 +42,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Drives all the reactive elements on the front end
 gem "stimulus_reflex", "~> 3.2"
 
+#data validation
+gem "dry-schema", "~> 1.5"
+
 group :development, :test do
   # Fixture generator
   gem "factory_bot_rails"
@@ -74,3 +77,9 @@ group :test do
   # Testing Framework
   gem "rspec-rails", "~> 4.0"
 end
+
+gem "dry-monads", "~> 1.3"
+
+gem "dry-types", "~> 1.4"
+
+gem "dry-validation", "~> 1.5"
