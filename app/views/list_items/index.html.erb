@@ -11,8 +11,8 @@
       <%= item_form.label :name, value: "Item" %>
       <%= item_form.text_field :name, autocomplete: "off", placeholder: "cheese, milk, bread",  data: { giveFocus: true, clearValue: true, reflex: "input->ListItemReflex#autocomplete_item" } %>
     <% end %>
-    <%= form.label :quantity, value: "Extra" %>
-    <%= form.text_field :quantity,  autocomplete: "off", data: {clearValue: true}, placeholder: "2 pieces, The orange one, bbq" %>
+    <%= form.label :quantity, value: "-" %>
+    <%= form.text_field :quantity,  autocomplete: "off", data: {clearValue: true}, placeholder: "2 pieces, The orange one, BBQ" %>
     <%= form.hidden_field :list_id %>
       <%= form.submit "Create" %>
   <% end %>
