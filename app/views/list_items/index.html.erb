@@ -8,11 +8,11 @@
 
   <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#doThing" } do |form| %>
     <%= form.fields_for :item do |item_form| %>
-      <%= item_form.label :name %>
-      <%= item_form.text_field :name, placeholder: "cheese, milk, bread",  data: { giveFocus: true, clearValue: true} %>
+      <%= item_form.label :name, value: "Item" %>
+      <%= item_form.text_field :name, autocomplete: "off", placeholder: "cheese, milk, bread",  data: { giveFocus: true, clearValue: true, reflex: "input->ListItemReflex#autocomplete_item" } %>
     <% end %>
-    <%= form.label :quantity %>
-    <%= form.text_field :quantity, data: {clearValue: true} %>
+    <%= form.label :quantity, value: "Extra" %>
+    <%= form.text_field :quantity,  autocomplete: "off", data: {clearValue: true}, placeholder: "2 pieces, The orange one, bbq" %>
     <%= form.hidden_field :list_id %>
       <%= form.submit "Create" %>
   <% end %>
