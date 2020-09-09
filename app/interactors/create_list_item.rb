@@ -13,7 +13,7 @@ class CreateListItem
       item = yield fetch_or_create_item(values[:item_attributes])
       list_item = yield create_list_item(item, values[:quantity], values[:list_id])
 
-      Success([list_item])
+      Success(list_item)
     end
   end
 

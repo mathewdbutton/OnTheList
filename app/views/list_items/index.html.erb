@@ -2,7 +2,7 @@
   <h2> <%= @list.name %> </h2>
 <% end %>
 <div data-controller="list-item" data-reflex-root="[list],[options]" data-list-item-list-id=<%= @list.id %> >
-  <ul list>
+  <ul list id="list-item-list">
     <%= render(ListItemRecordComponent.with_collection(@list_items, allow_delete: true)) %>
   </ul>
 
