@@ -47,11 +47,16 @@ export default class extends Controller {
     // document.body.classList.remove('wait')
   }
 
+  clearValue() {
+    Array.from(document.querySelectorAll("[data-clearValue]")).forEach((element) => {
+      element.value = '';
+    })
+  }
+
   setFocus() {
-    const focusElement = this.element.querySelector("[data-givefocus]")
+    const focusElement = this.element.querySelector("[data-giveFocus]")
     if (focusElement) {
-      focusElement.focus()
-      focusElement.value = ''
+      focusElement.focus();
     }
   }
 }

@@ -1,28 +1,25 @@
 <% content_for :heading do %>
   <h2> <%= @list.name %> </h2>
 <% end %>
-<div data-controller="list-item" data-reflex-root="[list],[options]" data-list-item-list-id=<%= @list.id %> >
+<div data-controller="list-item" data-reflex-root="[options],[list]" >
   <ul list id="list-item-list">
     <%= render(ListItemRecordComponent.with_collection(@list_items, allow_delete: true)) %>
   </ul>
 
-  <%= form_with model: [@list,@list_item]  do |form| %>
-    <%= form.label :quantity %>
-    <%= form.text_field :quantity %>
+  <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#doThing" } do |form| %>
     <%= form.fields_for :item do |item_form| %>
       <%= item_form.label :name %>
-      <%= item_form.text_field :name %>
+      <%= item_form.text_field :name, placeholder: "cheese, milk, bread",  data: { giveFocus: true, clearValue: true} %>
     <% end %>
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity, data: {clearValue: true} %>
     <%= form.hidden_field :list_id %>
       <%= form.submit "Create" %>
   <% end %>
 
-  <%# <input id="list-item-name" data-target="list-item.itemName" placeholder="Item Name" data-givefocus="true" data-reflex="input->ListItemReflex#autocomplete_item">
-  <input data-target="list-item.itemQuantity" placeholder="Item Quantity">
-  <button data-item-id="" data-action="click->list-item#createListItem">Add Item</button> %>
   <div options>
   <% @items.each do |item| %>
-      <p><%= item.name %><a data-item-id=<%= item.id %> href="#" data-action="click->list-item#createListItem">+</a></p>
+    <p><%= item.name %><a data-item-id=<%= item.id %> href="#" data-action="click->list-item#createListItem">+</a></p>
   <% end %>
   </div>
 </div>
