@@ -65,6 +65,8 @@ group :development do
   gem "standard", "~> 0.4.7"
 
   gem "bundler-audit"
+
+  gem 'bullet'
 end
 
 group :test do
