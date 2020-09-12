@@ -5,7 +5,6 @@
   <ul list id="list-item-list">
     <%= render(ListItemRecordComponent.with_collection(@list_items, allow_delete: true)) %>
   </ul>
-
   <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>
     <%= form.fields_for :item do |item_form| %>
       <%= item_form.label :name, value: "Item" %>
@@ -14,12 +13,21 @@
     <%= form.label :quantity, value: "-" %>
     <%= form.text_field :quantity,  autocomplete: "off", data: {clearValue: true}, placeholder: "2 pieces, The orange one, BBQ" %>
     <%= form.hidden_field :list_id %>
-      <%= form.submit "Create" %>
+    <%= form.submit "Create" %>
   <% end %>
-
   <div options>
-  <% @items.each do |item| %>
-    <p><%= item.name %><a data-item-id=<%= item.id %> href="#" data-action="click->list-item#createListItem">+</a></p>
-  <% end %>
+    <% @items.each do |item| %>
+      <p>
+        <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>
+          <%= item.name %>
+          <%# Need to move this out of here when I can be bothered styling this %>
+          <%= form.fields_for :item, item do |item_form| %>
+            <%= item_form.hidden_field :name %>
+          <% end %>
+          <%= form.hidden_field :list_id %>
+          <%= form.submit "Create" %>
+        <% end %>
+      </p>
+    <% end %>
   </div>
 </div>

@@ -10,8 +10,4 @@ export default class extends ApplicationController {
     this.setFocus()
     this.clearValue()
   }
-
-  get listId() {
-    return Number(this.data.get("list-id"))
-  }
 }
