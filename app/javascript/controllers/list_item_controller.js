@@ -6,7 +6,7 @@ export default class extends ApplicationController {
     this.setFocus()
   }
 
-  doThing() {
+  formSubmit() {
     this.setFocus()
     this.clearValue()
   }

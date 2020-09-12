@@ -6,7 +6,7 @@
     <%= render(ListItemRecordComponent.with_collection(@list_items, allow_delete: true)) %>
   </ul>
 
-  <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#doThing" } do |form| %>
+  <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>
     <%= form.fields_for :item do |item_form| %>
       <%= item_form.label :name, value: "Item" %>
       <%= item_form.text_field :name, autocomplete: "off", placeholder: "cheese, milk, bread",  data: { giveFocus: true, clearValue: true, reflex: "input->ListItemReflex#autocomplete_item" } %>
