@@ -10,5 +10,9 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
 
+  web:
+    environment:
+      - HOST_DOMAIN=https://onthelist.xyz
+
 volumes:
   caddy_data:
