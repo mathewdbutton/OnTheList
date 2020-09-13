@@ -1,6 +1,6 @@
 <% content_for :heading do %>
   <h2> Recipe: <%= @recipe.title %> </h2>
-  <p><%= @recipe.description %> </p>
+  <p><%= @recipe.description %> <%= link_to 'Edit', edit_recipe_path(id: @recipe.id) %></p>
 <% end %>
 
 <h3>Ingredients</h3>

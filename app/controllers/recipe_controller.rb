@@ -6,14 +6,18 @@ class RecipeController < ApplicationController
     @recipe = Recipe.new
   end
 
+  Permitted_Params = Dry::Schema.Params {
+    required(:id).filled(:integer)
+  }
+
   def show
-    permitted_params = Dry::Schema.Params {
-      required(:id).filled(:integer)
-    }.call(params.to_unsafe_hash)
+    permitted_params = Permitted_Params.call(params.to_unsafe_hash)
     @recipe = Recipe.find(permitted_params.to_h[:id])
   end
 
   def edit
+    permitted_params = Permitted_Params.call(params.to_unsafe_hash)
+    @recipe = Recipe.find(permitted_params.to_h[:id])
   end
 
   def update
