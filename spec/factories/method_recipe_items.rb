@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :model_recipe_item do
+  factory :method_recipe_item do
     quantity { "MyString" }
     recipe_method { nil }
     recipe_item { nil }
