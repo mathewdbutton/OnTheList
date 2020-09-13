@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:show, :index], controller: "item"
 
-  resources :recipes, only: [:show, :index], controller: "recipe" do
+  resources :recipes, only: [:show, :index, :create, :edit, :update], controller: "recipe" do
     resources :methods, only: [:show], controller: "method"
   end
 end

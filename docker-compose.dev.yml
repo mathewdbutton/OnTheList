@@ -1,7 +1,7 @@
 version: '3'
 services:
   caddy:
-    image: caddy/caddy:alpine
+    image: caddy:2.1.1-alpine
     ports:
       - "443:443"
       - "80:80"

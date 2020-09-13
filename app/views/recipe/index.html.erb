@@ -13,6 +13,10 @@
       </li>
     <% end %>
   </ul>
-  <input data-target="recipe.recipeTitle">
-  <button data-action="click->list#createList">Create List</button>
+
+  <%= form_with model: @recipe, data: {action: "ajax:success->list-item#formSubmit" }, local:true do |form| %>
+    <%= form.label :title %>
+    <%= form.text_field :title,  autocomplete: "off", data: {clearValue: true}, placeholder: "Bangers and Mash" %>
+    <%= form.submit "Create" %>
+  <% end %>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_31_115456) do
+ActiveRecord::Schema.define(version: 2020_09_12_074109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "fuzzystrmatch"
@@ -42,4 +42,44 @@ ActiveRecord::Schema.define(version: 2020_06_31_115456) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "model_recipe_items", force: :cascade do |t|
+    t.string "quantity"
+    t.bigint "recipe_method_id", null: false
+    t.bigint "recipe_item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_item_id"], name: "index_model_recipe_items_on_recipe_item_id"
+    t.index ["recipe_method_id"], name: "index_model_recipe_items_on_recipe_method_id"
+  end
+
+  create_table "recipe_items", force: :cascade do |t|
+    t.string "quantity"
+    t.bigint "recipe_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_recipe_items_on_item_id"
+    t.index ["recipe_id"], name: "index_recipe_items_on_recipe_id"
+  end
+
+  create_table "recipe_methods", force: :cascade do |t|
+    t.string "step"
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_recipe_methods_on_recipe_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "model_recipe_items", "recipe_items"
+  add_foreign_key "model_recipe_items", "recipe_methods"
+  add_foreign_key "recipe_items", "items"
+  add_foreign_key "recipe_items", "recipes"
+  add_foreign_key "recipe_methods", "recipes"
 end
