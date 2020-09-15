@@ -1,5 +1,5 @@
 class ListItemRecordComponent < ViewComponent::Base
-  attr_reader :list_item
+  attr_reader :list_item, :allow_delete
   def initialize(list_item_record:, allow_delete:)
     @list_item = list_item_record
     @allow_delete = allow_delete

@@ -1,4 +1,6 @@
 <li>
   <%= list_item.item.name %> <%= quantity %>
-  <a data-item-list-id=<%= list_item.id %> href="#" data-reflex="click->ListItemReflex#delete_list_item">x</a>
+  <% if allow_delete %>
+    <a data-item-list-id=<%= list_item.id %> href="#" data-reflex="click->ListItemReflex#delete_list_item">x</a>
+  <% end %>
 </li>
