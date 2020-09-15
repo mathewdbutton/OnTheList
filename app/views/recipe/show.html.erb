@@ -2,21 +2,17 @@
   <h2> Recipe: <%= @recipe.title %> </h2>
   <p><%= @recipe.description %> <%= link_to 'Edit', edit_recipe_path(id: @recipe.id) %></p>
 <% end %>
-
 <h3>Ingredients</h3>
-<% @recipe.lists.each do |list| %>
-  <h4><%= list.name %></h4>
-  <ul list>
-    <%= render(ListItemRecordComponent.with_collection(list.list_items, allow_delete: true)) %>
-  </ul>
-  <hr>
-<% end %>
-
+<ul list>
+  <% @recipe.recipe_items.each do |recipe_item| %>
+    <%= render(ListItemRecordComponent.new(list_item_record: recipe_item, allow_delete: false)) %>
+  <% end %>
+</ul>
+<hr>
 Method:
 <ol>
-<% @recipe.method_list.each do |method_item| %>
-  <li><%= sprintf(method_item.step, *method_item.replacements.map{ |list_item| list_item.item.name })%> </li>
-<% end %>
+  <% @recipe.recipe_methods.each do |recipe_method| %>
+    <li><%= recipe_method.step %></li>
+  <% end %>
 </ol>
-
-<%= link_to 'Start Cookin', recipe_method_path(recipe_id: 1, id: 1) %>
+<%= link_to 'Start Cookin', recipe_recipe_methods_path(recipe_id: @recipe.id, id: @recipe.recipe_methods.order(:order).first) %>

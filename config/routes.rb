@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :items, only: [:show, :index], controller: "item"
 
   resources :recipes, only: [:show, :index, :create, :edit, :update], controller: "recipe" do
-    resources :methods, only: [:show], controller: "method"
+    resources :recipe_methods, only: [:create]
   end
+
+  resources :recipe_items, only: [:create]
 end

@@ -1,6 +1,4 @@
 class RecipeController < ApplicationController
-  # Recipe = Struct.new(:lists, :title, :method_list, :description, :id)
-  Method = Struct.new(:step, :replacements, :ordering)
   def index
     @recipes = Recipe.all
     @recipe = Recipe.new
@@ -18,6 +16,9 @@ class RecipeController < ApplicationController
   def edit
     permitted_params = Permitted_Params.call(params.to_unsafe_hash)
     @recipe = Recipe.find(permitted_params.to_h[:id])
+    @recipe_item = @recipe.recipe_items.build
+    @item = @recipe_item.build_item
+    @recipe_method = @recipe.recipe_methods.build
   end
 
   def update
