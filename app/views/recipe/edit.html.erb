@@ -7,6 +7,7 @@
 <ol list>
   <% @recipe.recipe_items[0..-2].each do |recipe_item| %>
     <%= render(ListItemRecordComponent.new(list_item_record: recipe_item, allow_delete: true)) %> - <%= recipe_item.id%>
+    <a data-recipe-item-id="<%= recipe_item.id %>" href="#" data-reflex="click->RecipeItemReflex#delete_recipe_item">x</a>
   <% end %>
 </ol>
 
@@ -24,8 +25,8 @@
 
 <h3>Method:</h3>
 <ol list>
-  <% @recipe.recipe_methods.each do |recipe_method| %>
-    <li><%= recipe_method.step %></li>
+  <% @recipe.recipe_methods[0..-2].each do |recipe_method| %>
+    <li><%= recipe_method.step %> <a data-recipe-method-id="<%= recipe_method.id %>" href="#" data-reflex="click->RecipeMethodReflex#delete_recipe_method">x</a></li>
   <% end %>
 </ol>
 <%= form_with model: [@recipe, @recipe_method], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>
@@ -33,7 +34,7 @@
     <%= form.text_field :step, autocomplete: "off", placeholder: "Chop Onions",  data: { giveFocus: true, clearValue: true, reflex: "input->ListItemReflex#autocomplete_item" } %>
 
   <%= form.label :recipe_item_ids %>
-  <%= form.text_field :recipe_item_ids,  autocomplete: "off", data: {clearValue: true}, placeholder: "2 pieces, The orange one, BBQ" %>
+  <%= form.text_field :recipe_item_ids,  autocomplete: "off", data: {clearValue: true}, placeholder: "1,2,3" %>
   <%= form.hidden_field :recipe_id %>
   <%= form.submit "Create" %>
 <% end %>
