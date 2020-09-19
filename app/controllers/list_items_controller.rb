@@ -13,9 +13,9 @@ class ListItemsController < ApplicationController
     if result.success?
 
       cable_ready["list_item_created"].insert_adjacent_html(
-        selector: "#list-item-list", # required    - string containing a CSS selector or XPath expression
-        position: "beforeend", # [beforeend] - the relative position to the DOM element (beforebegin, afterbegin, beforeend, afterend)
-        html: render(ListItemRecordComponent.new(list_item_record: result.success, allow_delete: true)) # [null]      - the HTML to insert
+        selector: "#list-item-list",
+        position: "beforeend",
+        html: render(ListItemRecordComponent.new(list_item_record: result.success, allow_delete: true))
       )
 
       cable_ready.broadcast
