@@ -26,7 +26,14 @@
 <h3>Method:</h3>
 <ol list>
   <% @recipe.recipe_methods[0..-2].each do |recipe_method| %>
-    <li><%= recipe_method.step %> <a data-recipe-method-id="<%= recipe_method.id %>" href="#" data-reflex="click->RecipeMethodReflex#delete_recipe_method">x</a></li>
+    <li>
+    <%= recipe_method.step %> - <a data-recipe-method-id="<%= recipe_method.id %>" href="#" data-reflex="click->RecipeMethodReflex#delete_recipe_method">x</a>
+    <% recipe_method.method_recipe_items.each do | method_recipe_item| %>
+      <ul>
+        <li><%= method_recipe_item.recipe_item.item.name %></li>
+      </ul>
+    <% end %>
+    </li>
   <% end %>
 </ol>
 <%= form_with model: [@recipe, @recipe_method], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>

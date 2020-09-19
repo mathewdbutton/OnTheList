@@ -12,7 +12,16 @@
 Method:
 <ol>
   <% @recipe.recipe_methods.each do |recipe_method| %>
-    <li><%= recipe_method.step %></li>
+    <li><%= recipe_method.step %>
+        <details>
+      <summary>Ingredients</summary>
+      <ul>
+      <% recipe_method.method_recipe_items.each do |method_recipe_item| %>
+      <li><%= method_recipe_item.recipe_item.item.name %></li>
+      <% end %>
+      </ul>
+    </details>
+   </li>
   <% end %>
 </ol>
 <%= link_to 'Start Cookin', recipe_recipe_methods_path(recipe_id: @recipe.id, id: @recipe.recipe_methods.order(:order).first) %>
