@@ -32,7 +32,7 @@ class RecipeController < ApplicationController
 
     if permitted_params.success?
       recipe = Recipe.create!(permitted_params.to_h)
-      redirect_to action: "show", id: recipe.id
+      redirect_to action: "edit", id: recipe.id
     else
       render status: 400, json: permitted_params.errors.to_h.to_json
     end

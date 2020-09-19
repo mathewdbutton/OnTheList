@@ -9,7 +9,7 @@
         <span><%= recipe.title %>  <a data-id="<%= recipe.id %>" href="#" data-reflex="click->RecipeReflex#delete_recipe">x</a>
         <br>
         <span><%= recipe.description %><span>
-        <%= link_to 'Go to recipe', recipe_path(id: 1) %>
+        <%= link_to 'Go to recipe', recipe_path(id: recipe.id) %>
       </li>
     <% end %>
   </ul>
