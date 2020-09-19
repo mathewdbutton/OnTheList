@@ -275,7 +275,7 @@ GEM
       thread_safe (~> 0.1)
     unicode-display_width (1.7.0)
     uniform_notifier (1.13.0)
-    view_component (2.11.1)
+    view_component (2.19.0)
       activesupport (>= 5.0.0, < 7.0)
     web-console (4.0.2)
       actionview (>= 6.0.0)
