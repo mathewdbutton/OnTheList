@@ -6,6 +6,7 @@ class ListItemsController < ApplicationController
     @list_item ||= @list.list_items.build
     @item ||= @list_item.build_item
     @items ||= []
+    @partial_quantity ||= ""
   end
 
   def create

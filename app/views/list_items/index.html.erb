@@ -8,26 +8,29 @@
   <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>
     <%= form.fields_for :item do |item_form| %>
       <%= item_form.label :name, value: "Item" %>
-      <%= item_form.text_field :name, autocomplete: "off", placeholder: "cheese, milk, bread",  data: { giveFocus: true, clearValue: true, reflex: "input->ListItemReflex#autocomplete_item" } %>
+      <%= item_form.text_field :name, autocomplete: "off", placeholder: "cheese, milk, bread", data: { target: "list-item.itemName", giveFocus: true, action:"input->list-item#autocompleteItem", clearValue: true } %>
     <% end %>
     <%= form.label :quantity, value: "-" %>
-    <%= form.text_field :quantity,  autocomplete: "off", data: {clearValue: true}, placeholder: "2 pieces, The orange one, BBQ" %>
+    <%= form.text_field :quantity,  autocomplete: "off", data: {clearValue: true, target: "list-item.itemQuantity", action:"input->list-item#autocompleteItem"}, placeholder: "2 pieces, The orange one, BBQ" %>
     <%= form.hidden_field :list_id %>
-    <%= form.submit "Create" %>
+    <%= form.submit "Add" %>
   <% end %>
   <div options>
     <% @items.each do |item| %>
-      <p>
-        <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>
-          <%= item.name %>
-          <%# Need to move this out of here when I can be bothered styling this %>
-          <%= form.fields_for :item, item do |item_form| %>
-            <%= item_form.hidden_field :name %>
+
+        <%= render(ItemSearchResultComponent.new(item: item, quantity: @partial_quantity)) do |component| %>
+          <% component.slot(:action) do %>
+            <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>
+              <%= form.fields_for :item, item do |item_form| %>
+                <%= item_form.hidden_field :name %>
+              <% end %>
+              <%= form.hidden_field :quantity, value: @partial_quantity%>
+              <%= form.hidden_field :list_id %>
+              <%= form.submit "Add" %>
+            <% end %>
           <% end %>
-          <%= form.hidden_field :list_id %>
-          <%= form.submit "Create" %>
         <% end %>
-      </p>
+
     <% end %>
   </div>
 </div>

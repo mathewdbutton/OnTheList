@@ -2,6 +2,8 @@ import ApplicationController from './application_controller'
 
 export default class extends ApplicationController {
 
+  static targets = ["itemName", "itemQuantity"]
+
   initialize() {
     this.setFocus()
   }
@@ -9,5 +11,9 @@ export default class extends ApplicationController {
   formSubmit() {
     this.setFocus()
     this.clearValue()
+  }
+
+  autocompleteItem(event) {
+    this.stimulate('ListItem#autocomplete_item', this.itemNameTarget.value, this.itemQuantityTarget.value)
   }
 }

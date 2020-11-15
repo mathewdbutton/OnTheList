@@ -14,9 +14,9 @@ class ListItemReflex < ApplicationReflex
     ListItem.find(list_item_id).destroy
   end
 
-  def autocomplete_item
-    value = element["value"]
-    @items = Item.search_by_name(value)
+  def autocomplete_item(partial_name, partial_quantity)
+    @items = Item.search_by_name(partial_name)
+    @partial_quantity = partial_quantity
   end
 
   private
