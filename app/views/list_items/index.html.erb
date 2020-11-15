@@ -6,15 +6,22 @@
     <%= render(ListItemRecordComponent.with_collection(@list_items, allow_delete: true)) %>
   </ul>
   <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>
-    <%= form.fields_for :item do |item_form| %>
-      <%= item_form.label :name, value: "Item" %>
-      <%= item_form.text_field :name, autocomplete: "off", placeholder: "cheese, milk, bread", data: { target: "list-item.itemName", giveFocus: true, action:"input->list-item#autocompleteItem", clearValue: true } %>
-    <% end %>
-    <%= form.label :quantity, value: "-" %>
-    <%= form.text_field :quantity,  autocomplete: "off", data: {clearValue: true, target: "list-item.itemQuantity", action:"input->list-item#autocompleteItem"}, placeholder: "2 pieces, The orange one, BBQ" %>
-    <%= form.hidden_field :list_id %>
-    <%= form.submit "Add" %>
+    <div style="display: flex;">
+      <div style="display: flex;flex-wrap: wrap;">
+        <%= form.fields_for :item do |item_form| %>
+          <%= item_form.label :name, value: "Item" %>
+          <%= item_form.text_field :name, autocomplete: "off", placeholder: "cheese, milk, bread", data: { target: "list-item.itemName", giveFocus: true, action:"input->list-item#autocompleteItem", clearValue: true } %>
+        <% end %>
+        <%= form.label :quantity, value: "-" %>
+        <%= form.text_field :quantity,  autocomplete: "off", data: {clearValue: true, target: "list-item.itemQuantity", action:"input->list-item#autocompleteItem"}, placeholder: "2 pieces, The orange one, BBQ" %>
+        <%= form.hidden_field :list_id %>
+      </div>
+      <div>
+        <%= form.submit "Add" %>
+      </div>
+    </div>
   <% end %>
+
   <div options>
     <% @items.each do |item| %>
 
