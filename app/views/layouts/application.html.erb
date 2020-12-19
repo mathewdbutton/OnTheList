@@ -24,10 +24,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
-    <header>
-      <%= yield :heading %>
-    </header>
-    <%= yield %>
+  <body class="bg-background">
+    <div class="md:container md:mx-auto">
+      <header class='text-center py-8 border-b shadow-sm'>
+        <%= yield :heading %>
+      </header>
+      <div class="px-8">
+      <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

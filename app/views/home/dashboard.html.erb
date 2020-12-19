@@ -1,23 +1,40 @@
 <% content_for(:turbolink_caching_directive, "no-cache")%>
-
 <% content_for :heading do %>
-  <h2><mark>O</mark>n <mark>T</mark>he <mark>L</mark>ist</h2>
+  <h2 class="text-5xl"><span class="bg-primary text-white">O</span>n <span class="bg-primary text-white">T</span>he <span class="bg-primary text-white">L</span>ist</h2>
 <% end %>
-
-
-<h3> <%= link_to 'Lists', lists_path %> </h3>
-<h4> Recently Updated: </h4>
-<%= render(ListRecordComponent.with_collection(@lists)) %>
-<hr>
-
-<h3> <%= link_to 'Items', items_path %> </h3>
-<h4> Recently Updated: </h4>
-<ul>
-  <% @items.each do |item| %>
-    <li>
-      <%= item.name %>
-    </li>
-  <% end %>
-</ul>
-
-<h3> <%= link_to 'Recipes', recipes_path %> </h3>
+<div class="flex flex-col sm:flex-row sm:space-x-4">
+  <div class="py-4 flex-1">
+  <div>
+    <span class="float-right"></span>
+    <h3 class="text-2xl text-secondary">
+     <%= link_to 'Lists >', lists_path %>
+    </h3>
+    </div>
+     <span class="text-xs text-primary">Recently Changed:</span>
+    <ul class="sm:pl-0 space-y-2">
+    <% @lists.each do |list| %>
+      <li class="text-lg border rounded-md shadow">
+        <%= link_to(list_list_items_path(list), class: "block w-auto h-auto p-2 active:bg-primary active:text-white transition duration-75") do %>
+          <%= list.name %> - <span class="text-xs text-gray-400 ">[<%= list.list_items.count%>]</span>
+        <% end %>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+  <div class="py-4 flex-1">
+    <h3 class="text-2xl  text-secondary">
+      <%= link_to 'Items >', items_path %>
+    </h3>
+      <span class="text-xs text-primary">Recently Changed:</span>
+      <ul class="sm:pl-0 space-y-2">
+        <% @items.each do |item| %>
+          <li class="text-lg p-2 border rounded-md shadow">
+            <%= item.name %> - <span class="text-xs text-gray-400 "> <%= item.created_at == item.updated_at ? "created" : "updated" %> </span>
+          </li>
+        <% end %>
+      </ul>
+  </div>
+  <div class="py-4 flex-1">
+    <h3 class="text-2xl"> <%= link_to 'Recipes', recipes_path %> </h3>
+  </div>
+</div>
