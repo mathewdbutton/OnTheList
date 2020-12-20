@@ -25,10 +25,10 @@
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class="bg-background">
+    <header class='text-center py-8 border-b shadow-sm bg-white'>
+      <%= yield :heading %>
+    </header>
     <div class="md:container md:mx-auto">
-      <header class='text-center py-8 border-b shadow-sm bg-white'>
-        <%= yield :heading %>
-      </header>
       <div class="px-8">
       <%= yield %>
       </div>
