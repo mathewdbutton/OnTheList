@@ -4,6 +4,9 @@ RUN apt-get update && apt-get install -y nodejs postgresql-client npm
 RUN mkdir /myapp
 WORKDIR /myapp
 
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN apt-get install -y nodejs
+
 COPY Gemfile Gemfile.lock package.json yarn.lock /myapp/
 
 COPY . /myapp
