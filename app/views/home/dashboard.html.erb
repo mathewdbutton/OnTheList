@@ -1,6 +1,6 @@
 <% content_for(:turbolink_caching_directive, "no-cache")%>
 <% content_for :heading do %>
-  <h2 class="text-5xl"><span class="bg-primary text-white">O</span>n <span class="bg-primary text-white">T</span>he <span class="bg-primary text-white">L</span>ist</h2>
+  <h2 class="text-5xl"><%= render(HeadingComponent.new(text:'On The List'))%></h2>
 <% end %>
 <div class="flex flex-col sm:flex-row sm:space-x-4">
   <div class="py-4 flex-1">
