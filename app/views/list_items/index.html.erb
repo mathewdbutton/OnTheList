@@ -5,21 +5,28 @@
   <ul list id="list-item-list" class="space-y-2 py-2">
     <%= render(ListItemRecordComponent.with_collection(@list_items, allow_delete: true)) %>
   </ul>
+  </div>
+
   <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>
-    <div style="display: flex;">
-      <div style="display: flex;flex-wrap: wrap;">
+
+    <div class="text-lg bg-background ">
+      <div class="flex">
+      <div class="flex flex-col sm:flex-row flex-1 py-2 pl-2 shadow rounded-l-md bg-white space-y-2 sm:space-y-0 sm:space-x-2">
+      <div class="">
         <%= form.fields_for :item do |item_form| %>
-          <%= item_form.label :name, value: "Item" %>
-          <%= item_form.text_field :name, autocomplete: "off", placeholder: "cheese, milk, bread", data: { target: "list-item.itemName", giveFocus: true, action:"input->list-item#autocompleteItem", clearValue: true } %>
+          <%= item_form.text_field :name, class:"border-l border-t border-b w-full rounded-l-md sm:border sm:rounded-md", autocomplete: "off", placeholder: "cheese, milk, bread", data: { target: "list-item.itemName", giveFocus: true, action:"input->list-item#autocompleteItem", clearValue: true } %>
         <% end %>
-        <%= form.label :quantity, value: "-" %>
-        <%= form.text_field :quantity,  autocomplete: "off", data: {clearValue: true, target: "list-item.itemQuantity", action:"input->list-item#autocompleteItem"}, placeholder: "2 pieces, The orange one, BBQ" %>
+        </div>
+         <div class="">
+        <%= form.text_field :quantity, class:"border-l border-t border-b w-full rounded-l-md sm:border sm:rounded-md", autocomplete: "off", data: {clearValue: true, target: "list-item.itemQuantity", action:"input->list-item#autocompleteItem"}, placeholder: "2 pieces, The orange one, BBQ" %>
         <%= form.hidden_field :list_id %>
+        </div>
       </div>
-      <div>
-        <%= form.submit "Add" %>
+        <%= form.submit "+", class:"bg-green-500 w-10 text-center text-white rounded-r-md active:bg-white active:text-green-500 transition duration-75"%>
       </div>
     </div>
+
+
   <% end %>
 
   <div options>
