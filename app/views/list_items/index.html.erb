@@ -7,9 +7,9 @@
   </ul>
 
 <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>
-  <div class="text-lg bg-background ">
+  <div class="text-lg bg-background" id="scrollTo">
     <div class="flex">
-      <div class="flex flex-col sm:flex-row flex-1 py-2 pl-2 shadow rounded-l-md bg-white space-y-2 sm:space-y-0 sm:space-x-2">
+      <div class="flex flex-col sm:flex-row flex-1 py-2 pl-2 shadow border-b rounded-tl-md bg-white space-y-2 sm:space-y-0 sm:space-x-2">
         <div class="">
           <%= form.fields_for :item do |item_form| %>
             <%= item_form.text_field :name,
@@ -38,21 +38,21 @@
           <%= form.hidden_field :list_id %>
         </div>
       </div>
-      <%= form.submit "+", class:"bg-green-500 w-10 text-center text-white rounded-r-md active:bg-white active:text-green-500 transition duration-75"%>
+      <%= form.submit "+", class:"bg-green-500 w-10 text-center text-white rounded-tr-md active:bg-white active:text-green-500 transition duration-75"%>
     </div>
   </div>
 <% end %>
-<div options>
+<div options class="flex flex-col">
   <% @items.each do |item| %>
     <%= render(ItemSearchResultComponent.new(item: item, quantity: @partial_quantity)) do |component| %>
       <% component.slot(:action) do %>
-        <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>
+        <%= form_with model: [@list, @list_item],class:"flex", data: {action: "ajax:success->list-item#formSubmit" } do |form| %>
           <%= form.fields_for :item, item do |item_form| %>
             <%= item_form.hidden_field :name %>
           <% end %>
           <%= form.hidden_field :quantity, value: @partial_quantity%>
           <%= form.hidden_field :list_id %>
-          <%= form.submit "Add" %>
+          <%= form.submit "+", class:"bg-secondary w-10 text-center text-white active:bg-white active:text-secondary transition duration-75"%>
         <% end %>
       <% end %>
     <% end %>

@@ -12,6 +12,6 @@ class ItemSearchResultComponent < ViewComponent::Base
 
   def quantity
     return "" unless @quantity.present?
-    "- #{@quantity}"
+    @quantity.to_s
   end
 end

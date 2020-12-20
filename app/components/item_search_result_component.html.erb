@@ -1,6 +1,7 @@
   <div style="display: flex;">
-    <span style="padding-right: 10px">
-      <%= item.name %> <%= quantity %>
-    </span>
+ <div class="py-2 flex-1 pl-2 border-b bg-white flex flex-col">
+    <span><%= item.name %></span>
+    <span class="text-xs text-gray-400"><%= quantity %></span>
+  </div>
     <% if action %> <%= action.content %><% end %>
   </div>
