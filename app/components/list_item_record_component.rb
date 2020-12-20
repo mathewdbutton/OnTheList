@@ -7,6 +7,6 @@ class ListItemRecordComponent < ViewComponent::Base
 
   def quantity
     return "" unless list_item.quantity.present?
-    "- #{list_item.quantity}"
+    list_item.quantity.to_s
   end
 end
