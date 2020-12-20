@@ -2,7 +2,7 @@
   <h2 class="text-3xl"><%= render(HeadingComponent.new(text:@list.name))%></h2>
 <% end %>
 <div data-controller="list-item" data-reflex-root="[options],[list]" >
-  <ul list id="list-item-list">
+  <ul list id="list-item-list" class="space-y-2 py-2">
     <%= render(ListItemRecordComponent.with_collection(@list_items, allow_delete: true)) %>
   </ul>
   <%= form_with model: [@list, @list_item], data: {action: "ajax:success->list-item#formSubmit" } do |form| %>

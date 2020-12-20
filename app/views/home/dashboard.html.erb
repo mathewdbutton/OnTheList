@@ -13,8 +13,8 @@
      <span class="text-xs text-primary">Recently Changed:</span>
     <ul class="sm:pl-0 space-y-2">
     <% @lists.each do |list| %>
-      <li class="text-lg border rounded-md shadow bg-white">
-        <%= link_to(list_list_items_path(list), class: "block w-auto h-auto p-2 active:bg-primary active:text-white transition duration-75") do %>
+      <li class="text-lg  rounded-md shadow bg-white active:bg-primary active:text-white transition duration-75">
+        <%= link_to(list_list_items_path(list), class: "block w-auto h-auto p-2 ") do %>
           <%= list.name %> - <span class="text-xs text-gray-400 ">[<%= list.list_items.count%>]</span>
         <% end %>
       </li>
@@ -28,7 +28,7 @@
       <span class="text-xs text-primary">Recently Changed:</span>
       <ul class="sm:pl-0 space-y-2">
         <% @items.each do |item| %>
-          <li class="text-lg p-2 border rounded-md shadow bg-white">
+          <li class="text-lg p-2  rounded-md shadow bg-white">
             <%= item.name %> - <span class="text-xs text-gray-400 "> <%= item.created_at == item.updated_at ? "created" : "updated" %> </span>
           </li>
         <% end %>

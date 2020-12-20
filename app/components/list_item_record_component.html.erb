@@ -1,6 +1,11 @@
-<li>
-  <%= list_item.item.name %> <%= quantity %>
-  <% if allow_delete %>
-    <a data-item-list-id=<%= list_item.id %> href="#" data-reflex="click->ListItemReflex#delete_list_item">x</a>
-  <% end %>
+<li >
+  <div class="text-lg bg-background flex">
+  <div class="py-2 flex-1 pl-2 shadow rounded-l-md bg-white">
+    <%= list_item.item.name %> <%= quantity %></div>
+    <% if allow_delete %>
+      <a class="bg-red-500 w-10 text-center text-white rounded-r-md active:bg-white active:text-red-500 transition duration-75" data-item-list-id=<%= list_item.id %> href="#" data-reflex="click->ListItemReflex#delete_list_item">
+      <span class="block pt-1.5">x</span>
+      </a>
+    <% end %>
+  </div>
 </li>
