@@ -7,9 +7,9 @@ class HeadingComponent < ViewComponent::Base
   def markup
     text.split(" ").map { |word|
       [
-        tag.span(word[0], class: "bg-primary text-white"),
-        word[1..-1],
-        " "
+        {text: word[0], highlight: true},
+        {text: word[1..-1], highlight: false},
+        {text: " ", highlight: false}
       ]
     }.flatten
   end

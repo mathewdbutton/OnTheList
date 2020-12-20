@@ -1,1 +1,1 @@
-<% markup.each do |element| %><%= element %><% end %>
+<% markup.each do |element| %><span class="<%= "bg-primary text-white" if element[:highlight] %>"><%= element[:text] %></span><% end %>
