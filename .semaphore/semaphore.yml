@@ -12,6 +12,9 @@ blocks:
           value: 'postgresql://postgres:@0.0.0.0:5432/myapp_test'
         - name: RAILS_ENV
           value: test
+      prologue:
+        commands:
+          - sem-version node v12.16.0
       jobs:
         - name: Test
           commands:
