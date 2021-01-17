@@ -18,8 +18,8 @@ blocks:
             - checkout
             - sem-service start postgres 11
             - sem-version ruby 2.7.1
-            - cache restore gems-revision-$(checksum Gemfile.lock) vendor/bundle
-            - cache restore gems-revision-$(checksum yarn.lock) node_modules
+            - cache restore gems-revision-$(checksum Gemfile.lock)
+            - cache restore gems-revision-$(checksum yarn.lock)
             - yarn install
             - bundle install --deployment --path vendor/bundle
             - cache store gems-revision-$(checksum Gemfile.lock) vendor/bundle
