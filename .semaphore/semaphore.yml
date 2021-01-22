@@ -41,8 +41,8 @@ blocks:
             - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
             - checkout
             - docker-compose build
-            - docker tag onthelist_semaphore:latest "$DOCKER_USERNAME"/onthelist_semaphore:latest
-            - docker tag onthelist_semaphore:latest "$DOCKER_USERNAME"/onthelist_semaphore:$SEMAPHORE_WORKFLOW_ID
+            - docker tag onthelist_web:latest "$DOCKER_USERNAME"/onthelist_semaphore:latest
+            - docker tag onthelist_web:latest "$DOCKER_USERNAME"/onthelist_semaphore:$SEMAPHORE_WORKFLOW_ID
             - docker push "$DOCKER_USERNAME"/onthelist_semaphore:latest
             - docker push "$DOCKER_USERNAME"/onthelist_semaphore:$SEMAPHORE_WORKFLOW_ID
             - docker images
