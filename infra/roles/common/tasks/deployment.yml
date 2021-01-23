@@ -1,0 +1,4 @@
+- name: Pull latest docker image
+  docker_image:
+    name: dockerbuttons/onthelist_semaphore:latest
+    source: pull

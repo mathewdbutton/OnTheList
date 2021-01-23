@@ -1,0 +1,12 @@
+- name: Download github docker compose release
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-Linux-x86_64"
+    dest: /usr/local/bin/docker-compose
+    mode: '777'
+
+- name: Copy across docker-compose manifest
+  copy:
+    src: docker-compose.yml
+    dest: /home/mat/docker/
+    owner: mat
+    mode: 0777

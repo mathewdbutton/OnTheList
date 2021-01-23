@@ -1,0 +1,12 @@
+- import_tasks: setup-user.yml
+  tags: users
+- import_tasks: fail2ban.yml
+  tags: fail2ban
+- import_tasks: install-packages.yml
+  tags: packages
+- import_tasks: docker.yml
+  tags: docker
+- import_tasks: docker-compose.yml
+  tags: docker-compose
+- import_tasks: deployment.yml
+  tags: deployment

@@ -1,0 +1,3 @@
+---
+create_user: mat
+copy_local_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_vps_rsa.pub') }}"
