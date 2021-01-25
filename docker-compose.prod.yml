@@ -26,7 +26,6 @@ services:
       - REDIS_URL=redis://cache
       - HOST_DOMAIN=https://onthelist.apps.pushbutton.xyz
     volumes:
-      - .:/myapp
       - web_gem_cache:/usr/local/bundle
       - web_npm_cache:/myapp/node_modules
     depends_on:
