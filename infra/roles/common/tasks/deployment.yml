@@ -2,3 +2,11 @@
   docker_image:
     name: dockerbuttons/onthelist_semaphore:latest
     source: pull
+
+- name: Restart OnTheList
+  docker_compose:
+    project_src: /home/mat/OnTheList
+    files: docker-compose.prod.yml
+    build: no
+    restarted: yes
+  register: output
