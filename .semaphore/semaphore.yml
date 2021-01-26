@@ -20,7 +20,7 @@ blocks:
           commands:
             - checkout
             - sem-service start postgres 11
-            - sem-version ruby 2.7.1
+            - sem-version ruby 3.0.0
             - cache restore gems-revision-$(checksum Gemfile.lock)
             - cache restore gems-revision-$(checksum yarn.lock)
             - yarn install
@@ -29,7 +29,6 @@ blocks:
             - cache store gems-revision-$(checksum yarn.lock) node_modules
             - 'bundle exec rake db:setup'
             - bundle exec rspec
-
   - name: Build Docker Image
     task:
       secrets:
@@ -37,12 +36,11 @@ blocks:
       jobs:
         - name: Docker Hub
           commands:
-            # Authenticate with Docker Hub
-            - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+            - 'echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin'
             - checkout
             - docker-compose build
-            - docker tag onthelist_web:latest "$DOCKER_USERNAME"/onthelist_semaphore:latest
-            - docker tag onthelist_web:latest "$DOCKER_USERNAME"/onthelist_semaphore:$SEMAPHORE_WORKFLOW_ID
-            - docker push "$DOCKER_USERNAME"/onthelist_semaphore:latest
-            - docker push "$DOCKER_USERNAME"/onthelist_semaphore:$SEMAPHORE_WORKFLOW_ID
+            - 'docker tag onthelist_web:latest "$DOCKER_USERNAME"/onthelist_semaphore:latest'
+            - 'docker tag onthelist_web:latest "$DOCKER_USERNAME"/onthelist_semaphore:$SEMAPHORE_WORKFLOW_ID'
+            - 'docker push "$DOCKER_USERNAME"/onthelist_semaphore:latest'
+            - 'docker push "$DOCKER_USERNAME"/onthelist_semaphore:$SEMAPHORE_WORKFLOW_ID'
             - docker images

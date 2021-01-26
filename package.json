@@ -10,7 +10,7 @@
     "autoprefixer": "^9",
     "postcss": "^7",
     "stimulus": "^1.1.1",
-    "stimulus_reflex": "^3.2.2-pre1",
+    "stimulus_reflex": "^3.4.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "turbolinks": "^5.2.0"
   },
