@@ -1,6 +1,8 @@
 version: '3'
 services:
   db:
+    env_file:
+      - .env.prod
     image: postgres
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
@@ -12,7 +14,9 @@ services:
       - 6379
 
   web:
-    build: .
+    image: dockerbuttons/onthelist_semaphore:latest
+    env_file:
+      - .env.prod
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment:
       - DATABASE_HOST=db
@@ -22,7 +26,6 @@ services:
       - REDIS_URL=redis://cache
       - HOST_DOMAIN=https://onthelist.apps.pushbutton.xyz
     volumes:
-      - .:/myapp
       - web_gem_cache:/usr/local/bundle
       - web_npm_cache:/myapp/node_modules
     depends_on:

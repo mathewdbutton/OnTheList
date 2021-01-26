@@ -1,0 +1,19 @@
+- name: install apt fail2ban packages
+  apt:
+    name: ['fail2ban', 'sendmail', 'iptables-persistent']
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Ensure fail2ban is started
+  service:
+    name: fail2ban
+    state: started
+
+# - name: override the basic fail2ban configuration with .local file
+#   copy:
+#     src: jail.local
+#     dest: /etc/fail2ban/jail.local
+#     owner: root
+#     group: root
+#     mode: 0644

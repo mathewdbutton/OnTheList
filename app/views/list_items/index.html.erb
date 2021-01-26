@@ -1,5 +1,5 @@
 <% content_for :heading do %>
-  <h2 class="text-3xl"><%= render(HeadingComponent.new(text:@list.name))%></h2>
+  <h2 class="text-3xl"><%= link_to render(HeadingComponent.new(text:@list.name)), root_path %></h2>
 <% end %>
 <div data-controller="list-item" data-reflex-root="[options],[list]" >
   <ul list id="list-item-list" class="space-y-2 py-2">

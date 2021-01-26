@@ -42,3 +42,5 @@ certs/*
 Caddyfile
 
 /config/credentials/production.key
+
+infra/venv

@@ -1,0 +1,20 @@
+- name: Create a new regular user with sudo privileges
+  user:
+    name: "{{ create_user }}"
+    state: present
+    append: true
+    create_home: true
+    shell: /bin/bash
+
+- name: Set authorized key for remote user
+  authorized_key:
+    user: "{{ create_user }}"
+    state: present
+    key: "{{ copy_local_key }}"
+
+- name: Allow login without-password only
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    state: present
+    regexp: '^#?PermitRootLogin'
+    line: 'PermitRootLogin without-password'
